@@ -1,0 +1,227 @@
+$primary-color: rgba(128, 0, 128, 0.8);
+$secondary-color: #5853e8;
+$hover-color: #fc009b;
+$text-color: #333;
+$background-image: '../images/background.jpg';
+$dice-size: 50px;
+$dice-margin: 10px;
+$popup-close-color: #f50000;
+$popup-close-hover-color: rgb(77, 75, 75);
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background: url($background-image) no-repeat center center fixed;
+    background-size: cover;
+    color: $text-color;
+    margin: 0;
+    padding: 0;
+    @include flex-center;
+    flex-direction: column;
+    height: 100vh;
+    text-align: center;
+}
+
+header {
+    background-color: $primary-color;
+    color: white;
+    padding: 0.5rem 1rem;
+    width: auto;
+    text-align: center;
+    font-size: 1rem;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+main {
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    position: relative;
+    overflow-y: auto;
+    max-height: 80vh;
+    padding-bottom: 20px;
+}
+
+#game {
+    @include flex-center;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.player, .computer {
+    text-align: center;
+}
+
+.dice {
+    @include flex-center;
+}
+
+.dice img {
+    width: $dice-size;
+    height: $dice-size;
+    margin: $dice-margin;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.dice img.shake {
+    animation: shake 1.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(10px, 10px) rotate(0deg); }
+    10% { transform: translate(-10px, -20px) rotate(-10deg); }
+    20% { transform: translate(-20px, 0px) rotate(10deg); }
+    30% { transform: translate(20px, 20px) rotate(0deg); }
+    40% { transform: translate(10px, -10px) rotate(10deg); }
+    50% { transform: translate(-10px, 20px) rotate(-10deg); }
+    60% { transform: translate(-20px, 10px) rotate(0deg); }
+    70% { transform: translate(20px, 10px) rotate(-10deg); }
+    80% { transform: translate(-10px, -10px) rotate(10deg); }
+    90% { transform: translate(10px, 20px) rotate(0deg); }
+    100% { transform: translate(10px, -20px) rotate(-10deg); }
+}
+
+#controls {
+    margin-top: 1rem;
+    @include flex-center;
+}
+
+button {
+    background-color: $secondary-color;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: $hover-color;
+    }
+}
+
+#result {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+#how-to-play, #rules {
+    margin-top: 20px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+#how-to-play h2, #rules h2 {
+    display: inline-block;
+}
+
+#how-to-play .details, #rules .details {
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.toggle {
+    font-size: 0.8rem;
+    margin-left: 10px;
+    color: #1772d3;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.details {
+    display: none;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    @include flex-center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.close {
+    color: $popup-close-color;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+        color: $popup-close-hover-color;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+#fireworks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: none;
+}
+
+@media (max-width: 600px) {
+    main {
+        max-width: 80%;
+    }
+    header {
+        max-width: 70%;
+    }
+
+    .dice img {
+        width: 40px;
+        height: 40px;
+    }
+
+    button {
+        padding: 0.4rem 0.8rem;
+    }
+
+    .popup-content {
+        width: 90%;
+        max-width: 250px;
+    }
+}

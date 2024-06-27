@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Dice Game by Sara Namakshenasan</h1>
+    </header>
+    <main>
+        <div id="game">
+            <div class="player">
+                <h2>You</h2>
+                <div class="dice" id="player-dice"></div>
+                <p>Round Score: <span id="player-round-score">0</span></p>
+                <p>Total Score: <span id="player-total-score">0</span></p>
+            </div>
+            <div class="computer">
+                <h2>Opponent</h2>
+                <div class="dice" id="computer-dice"></div>
+                <p>Round Score: <span id="computer-round-score">0</span></p>
+                <p>Total Score: <span id="computer-total-score">0</span></p>
+            </div>
+        </div>
+        <div id="controls">
+            <button id="roll-dice">Roll Dice</button>
+            <button id="reset-game">Reset Game</button>
+        </div>
+        <div id="result"></div>
+        <div id="how-to-play">
+            <h2>How to Play <span class="toggle" id="toggle-how-to-play">Show</span></h2>
+            <p class="details">To play the game, click on the "Roll Dice" button.<br>Both the player and the opponent will roll two dice three times.<br>The scores are calculated based on the dice rolls.<br>After three rounds, the total scores are compared to determine the winner.</p>
+        </div>
+        <div id="rules">
+            <h2>Rules <span class="toggle" id="toggle-rules">Show</span></h2>
+            <p class="details">1. If any of the player's two dice comes up as a 1, the score for that round is 0.<br>2. If the player rolls a pair of the same numbers, the score is the total of the two dice times 2.<br>3. Any other combination of dice results in the score being the total value of the two dice.</p>
+        </div>
+    </main>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <p id="popup-message"></p>
+        </div>
+    </div>
+    <canvas id="fireworks"></canvas>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
